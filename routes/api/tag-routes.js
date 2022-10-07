@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Tag, Product, ProductTag } = require('../../models');
+const { Tag, Product, ProductTag, Category } = require('../../models');
 
 // The `/api/tags` endpoint
 
@@ -59,12 +59,26 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// router.post('/', (req, res) => {
-//   // create a new tag
-// });
+router.post('/', async (req, res) => {
+  // create a new tag
+  let newTag = {
+    tag_name: req.body.tag_name || 'Unknown Tag(Please rename)'
+  }
+  try {
+    const tagNew = await Tag.create(newTag);
+    res.json(tagNew)
+  }
+  catch (error) {
+    res.status(507).json(error);
+  }
+});
 
-// router.put('/:id', (req, res) => {
+// router.put('/:id', async (req, res) => {
 //   // update a tag's name by its `id` value
+//   try{
+    
+//   }
+//   catch (error) {}
 // });
 
 // router.delete('/:id', (req, res) => {
