@@ -81,7 +81,7 @@ router.put('/:id', async (req, res) => {
         id: req.params.id
       }
     });
-    if(tagUpdate){
+    if(tagUpdate === 1){
       res.json({ status: `successfully updated tag with ID = ${req.params.id}`})
     } else {
       res.status(404).json({ error: "Tag not found, try a different ID"})
