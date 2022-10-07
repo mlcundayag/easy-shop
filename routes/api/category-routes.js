@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
             'product_name',
             'price',
             'stock',
-            'catgeory_id'
+            'category_id'
           ]
         }
       ]
@@ -27,10 +27,36 @@ router.get('/', async (req, res) => {
   }
 });
 
-// router.get('/:id', (req, res) => {
-//   // find one category by its `id` value
-//   // be sure to include its associated Products
-// });
+router.get('/:id', async (req, res) => {
+  // find one category by its `id` value
+  // be sure to include its associated Products
+  try {
+    const categoryData = await Category.findOne({
+      where: {
+        id: req.params.id,
+      },
+      include: [
+        {
+          model: Product,
+          attributes: [
+            'id',
+            'product_name',
+            'price',
+            'stock',
+            'category_id'
+          ]
+        }
+      ]
+    });
+    if(categoryData) {
+    res.json(categoryData);
+  } else {
+    res.status(404).json({error: "Category not found, try a different ID"});
+  }
+  } catch (error) {
+    res.status(500).json(error)
+  }
+});
 
 // router.post('/', (req, res) => {
 //   // create a new category
