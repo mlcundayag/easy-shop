@@ -79,7 +79,7 @@ router.put('/:id', async (req, res) => {
         id: req.params.id,
       },
     });
-    if(categoryUpdate === 1) {
+    if(categoryUpdate) {
       res.json({status: `successfully updated category with ID = ${req.params.id}`});
     } else {
       res.status(404).json({error: "Category not found, try a different ID"});

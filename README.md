@@ -43,7 +43,7 @@ I was able to create working back end and was able to deploy with CRUD operation
 ## Links
 
 1. [GitHub](https://github.com/mlcundayag/easy-shop)
-2. [Video Walkthrough]()
+2. [Video Walkthrough](https://drive.google.com/file/d/184hKs1ufxy-k9cn5ZC4RXc51Fmy8V-XF/view)
 
 
   
